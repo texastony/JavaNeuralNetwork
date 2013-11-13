@@ -1,7 +1,9 @@
-package texastony.neural_network;
+	package texastony.neural_network;
 
 import java.lang.Math;
+import java.util.Arrays;
 import java.util.Random;
+
 import texastony.neural_network.OutputNeuron;
 import texastony.neural_network.HiddenNeuron;
 import texastony.neural_network.InputNeuron;
@@ -45,6 +47,7 @@ public class neural_network{
 				double[] outputTemp1 = {outputWeights[0]};
 				double[] outputTemp2 = {outputWeights[1]};
 				double[] outputTemp3 = {outputWeights[2]};
+//				System.out.println(Arrays.toString(deltaTemp));
 				hidden1.updateWeight(deltaTemp, outputTemp1);
 				hidden2.updateWeight(deltaTemp, outputTemp2);
 				hidden3.updateWeight(deltaTemp, outputTemp3);
@@ -104,9 +107,10 @@ public class neural_network{
 	}
 	private static double[] randomWeights(int numInputs, Random r){
 		double[] output = new double[numInputs];
-		for(int i=0;i<numInputs-1;i++){
-			output[i]=r.nextDouble()-1*2*(2.4/numInputs);
+		for(int i=0;i<numInputs;i++){
+			output[i]=(r.nextDouble()-.5)*2*(2.4/numInputs);
 		}
 		return output;
+		
 	}
 }

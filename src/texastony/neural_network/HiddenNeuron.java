@@ -11,8 +11,8 @@ public class HiddenNeuron{
 	double delta;
 	public HiddenNeuron(double[] intialWeightValue, int numInputs){
 		this.inputValue = new double[numInputs];
-		this.threshold = 1.0;
-		this.learningFactor = 1.0;
+		this.threshold = -1.0;
+		this.learningFactor = .10;
 		this.weightValue = intialWeightValue;
 	}
 	public void setInput(double[] input){
