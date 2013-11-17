@@ -14,7 +14,7 @@ public class OutputNeuron{
 	public OutputNeuron(double[] intialWeightValue, int numInputs){
 		this.inputValue = new double[numInputs];
 		this.threshold = -1;
-		this.learningFactor = 0.1;
+		this.learningFactor = 100;
 		this.weightValue = intialWeightValue;
 	}
 	public void setInput(double[] input){
