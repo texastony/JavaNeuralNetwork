@@ -16,6 +16,7 @@ public class OutputNeuron{
 		this.threshold = -1;
 		this.learningFactor = 100;
 		this.weightValue = intialWeightValue;
+		this.weightValuePast = new double[numInputs];
 	}
 	public void setInput(double[] input){
 		this.inputValue = input;
@@ -34,7 +35,9 @@ public class OutputNeuron{
 	}
 	public void updateWeight(double e_out) {
 //		System.out.print(outputValue+"  ");
-		weightValuePast = weightValue;
+		for(int i=0; i< weightValue.length; i++){
+			weightValuePast[i] = weightValue[i];
+		}
 		delta=outputValue*(1-outputValue)*e_out;
 		for (int i=0; i<inputValue.length; i++){
 			weightValue[i]=weightValue[i]+learningFactor*inputValue[i]*delta;

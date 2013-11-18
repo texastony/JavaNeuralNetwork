@@ -15,35 +15,35 @@ public class neural_network{
 		OutputNeuron output1 = new OutputNeuron(randomWeights(2, r), 2);
 		InputNeuron input1 = new InputNeuron();
 		InputNeuron input2 = new InputNeuron();
-		double error = 0.11;
+		double error = 0.5344466456471899;
 		double error0 = 1000.0;
 		double error1 = 1000.0;
 		double error2 = 1000.0;
 		double error3 = 1000.0;
 		int counter =0;
-		while(error>0.4){
+		while(counter< 500){
 			for(int count = 0;count<4;count++){
 				if(count==0){
 					error=0.0;
-					input1.setInput(0.0);
-					input2.setInput(1.0);
+					input1.setInput(-1.0);
+					input2.setInput(-1.0);
 				}
 				else if(count==1){
 					input1.setInput(1.0);
-					input2.setInput(0.0);
+					input2.setInput(-1.0);
 				}
 				else if(count==2){
 					input1.setInput(1.0);
 					input2.setInput(1.0);
 				}
 				else{
-					input1.setInput(0.0);
-					input2.setInput(0.0);
+					input1.setInput(-1.0);
+					input2.setInput(1.0);
 				}
-				double[] temp = {input1.getOutput(), input2.getOutput()};;
+				double[] temp = {input1.getOutput(), input2.getOutput()};
 				output1.setInput(temp);
 				if(count==0){
-					error0 = 1-output1.getOutput();
+					error0 = -1-output1.getOutput();
 					output1.updateWeight(error0);
 					error+=error0*error0;
 				}
@@ -58,10 +58,12 @@ public class neural_network{
 					error+=error2*error2;
 				}
 				else{
-					error3 = 0-output1.getOutput();
+					error3 = 1-output1.getOutput();
 					output1.updateWeight(error3);
 					error+=error3*error3;
-//					System.out.println("error =" + error);
+					error=error/4;
+					error=java.lang.Math.sqrt(error);
+					System.out.println("error =" + error);
 				}
 			}
 		counter++;

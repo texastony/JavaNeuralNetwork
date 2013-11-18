@@ -198,39 +198,39 @@ public class JavaMLP{
 //	    trainInputs[3][2]  = 1;//bias
 //	    trainOutput[3] = -1;
 	    //OR
-//	    trainInputs[0][0]  = 1;
-//	    trainInputs[0][1]  = -1;
-//	    trainInputs[0][2]  = 1;//bias
-//	    trainOutput[0] = 1;	
-//	    trainInputs[1][0]  = -1;
-//	    trainInputs[1][1]  = 1;
-//	    trainInputs[1][2]  = 1;//bias
-//	    trainOutput[1] = 1;	
-//	    trainInputs[2][0]  = 1;
-//	    trainInputs[2][1]  = 1;
-//	    trainInputs[2][2]  = 1;//bias
-//	    trainOutput[2] = 1;	
-//	    trainInputs[3][0]  = -1;
-//	    trainInputs[3][1]  = -1;
-//	    trainInputs[3][2]  = -1;//bias
-//	    trainOutput[3] = -1;
-		//AND with 0:
-		trainInputs[0][0]  = 1;
-	    trainInputs[0][1]  = 0;
+	    trainInputs[0][0]  = 1;
+	    trainInputs[0][1]  = -1;
 	    trainInputs[0][2]  = 1;//bias
-	    trainOutput[0] = 0;	
-	    trainInputs[1][0]  = 0;
+	    trainOutput[0] = 1;	
+	    trainInputs[1][0]  = -1;
 	    trainInputs[1][1]  = 1;
 	    trainInputs[1][2]  = 1;//bias
-	    trainOutput[1] = 0;	
+	    trainOutput[1] = 1;	
 	    trainInputs[2][0]  = 1;
 	    trainInputs[2][1]  = 1;
 	    trainInputs[2][2]  = 1;//bias
 	    trainOutput[2] = 1;	
-	    trainInputs[3][0]  = 0;
-	    trainInputs[3][1]  = 0;
-	    trainInputs[3][2]  = 1;//bias
-	    trainOutput[3] = 0;
+	    trainInputs[3][0]  = -1;
+	    trainInputs[3][1]  = -1;
+	    trainInputs[3][2]  = -1;//bias
+	    trainOutput[3] = -1;
+		//AND with 0:
+//		trainInputs[0][0]  = 1;
+//	    trainInputs[0][1]  = 0;
+//	    trainInputs[0][2]  = 1;//bias
+//	    trainOutput[0] = 0;	
+//	    trainInputs[1][0]  = 0;
+//	    trainInputs[1][1]  = 1;
+//	    trainInputs[1][2]  = 1;//bias
+//	    trainOutput[1] = 0;	
+//	    trainInputs[2][0]  = 1;
+//	    trainInputs[2][1]  = 1;
+//	    trainInputs[2][2]  = 1;//bias
+//	    trainOutput[2] = 1;	
+//	    trainInputs[3][0]  = 0;
+//	    trainInputs[3][1]  = 0;
+//	    trainInputs[3][2]  = 1;//bias
+//	    trainOutput[3] = 0;
 	 }
 	
 	
