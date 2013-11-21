@@ -13,6 +13,7 @@ public class neural_network{
 	public static void main(String[] args) {
 		Random r = new Random();
 		OutputNeuron output1 = new OutputNeuron(randomWeights(2, r), 2);
+		OutputNeuron output2 = new OutputNeuron(randomWeights(2, r), 2);
 		InputNeuron input1 = new InputNeuron();
 		InputNeuron input2 = new InputNeuron();
 		double error = 0.5344466456471899;
@@ -48,7 +49,7 @@ public class neural_network{
 					error+=error0*error0;
 				}
 				else if(count==1){
-					error1 = 1-output1.getOutput();
+					error1 = -1-output1.getOutput();
 					output1.updateWeight(error1);
 					error+=error1*error1;
 				}
@@ -58,7 +59,7 @@ public class neural_network{
 					error+=error2*error2;
 				}
 				else{
-					error3 = 1-output1.getOutput();
+					error3 = -1-output1.getOutput();
 					output1.updateWeight(error3);
 					error+=error3*error3;
 					error=error/4;
