@@ -10,10 +10,10 @@ public class HiddenNeuron{
 	double learningFactor;
 	double delta;
 	public HiddenNeuron(double[] intialWeightValue, int numInputs){
-		this.inputValue = new double[numInputs];
+		this.inputValue = new double[numInputs+1];
 		this.threshold = -1.0;
-		this.learningFactor = .10;
-		this.weightValue = intialWeightValue;
+		this.learningFactor = 10;
+		this.weightValue = new double[numInputs+1];
 	}
 	public void setInput(double[] input){
 		this.inputValue = input;
@@ -26,7 +26,7 @@ public class HiddenNeuron{
 		for (int i=0; i<inputValue.length; i++){
 			tempValue = inputValue[i]*weightValue[i] + tempValue;
 		}
-		outputValue = tempValue - threshold;
+		tempValue=+ threshold*weightValue[inputValue.length+1];
 		outputValue = 1/(1+Math.exp(-outputValue));
 		return outputValue;
 	}
