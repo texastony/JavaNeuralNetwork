@@ -1,7 +1,6 @@
 package texastony.neural_network;
 
 import java.lang.Math;
-import java.util.Arrays;
 
 public class OutputNeuron{
 	double[] inputValue;
@@ -14,7 +13,7 @@ public class OutputNeuron{
 	public OutputNeuron(double[] intialWeightValue, int numInputs){
 		this.inputValue = new double[numInputs+1];
 		this.threshold = -1;
-		this.learningFactor = 10;
+		this.learningFactor = 01.0;
 		this.weightValue = intialWeightValue;
 		this.weightValuePast = new double[numInputs+1];
 	}
