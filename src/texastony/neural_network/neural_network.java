@@ -2,7 +2,7 @@
 
 //import java.lang.Math;
 //import java.util.Arrays;
-simport java.util.Random;
+import java.util.Random;
 import texastony.neural_network.OutputNeuron;
 import texastony.neural_network.HiddenNeuron;
 import texastony.neural_network.InputNeuron;
@@ -16,13 +16,13 @@ public class neural_network{
 		HiddenNeuron hidden2 = new HiddenNeuron(randomWeights(3, r), 2);
 		InputNeuron input1 = new InputNeuron();
 		InputNeuron input2 = new InputNeuron();
-		double error;
+		double error=2;
 		double error0;
 		double error1;
 		double error2;
 		double error3;
 		int counter =0;
-		while(counter< 100000){
+		while(error>.001){
 			error=0.0;
 			for(int count = 0;count<4;count++){
 				if(count==0){
@@ -48,7 +48,7 @@ public class neural_network{
 				double[] temp2 = {hidden1.getOutput(), hidden2.getOutput()};
 				output1.setInput(temp2);
 				if(count==0){
-					error0 = 0-output1.getOutput();
+					error0 = 1-output1.getOutput();
 					output1.updateWeight(error0);
 					double[] htemp = {output1.getDelta()};
 					double[] h1temp = {output1.getWeightValuePast()[0]};
@@ -59,7 +59,7 @@ public class neural_network{
 					error=error0*error0;
 				}
 				else if(count==1){
-					error1 = 1-output1.getOutput();
+					error1 = 0-output1.getOutput();
 					output1.updateWeight(error1);
 					double[] htemp = {output1.getDelta()};
 					double[] h1temp = {output1.getWeightValuePast()[0]};
@@ -71,7 +71,7 @@ public class neural_network{
 					error+=error1*error1;
 				}
 				else if(count==2){
-					error2 = 1-output1.getOutput();
+					error2 = 0-output1.getOutput();
 					output1.updateWeight(error2);
 					double[] htemp = {output1.getDelta()};
 					double[] h1temp = {output1.getWeightValuePast()[0]};
