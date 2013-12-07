@@ -1,7 +1,5 @@
-	package texastony.neural_network;
+package texastony.neural_network;
 
-//import java.lang.Math;
-//import java.util.Arrays;
 import java.util.Random;
 import texastony.neural_network.OutputNeuron;
 import texastony.neural_network.HiddenNeuron;
@@ -10,47 +8,44 @@ import texastony.neural_network.InputNeuron;
 
 public class neural_network{	
 	public static void main(String[] args) {
-		Random r = new Random();
-		OutputNeuron output1 = new OutputNeuron(randomWeights(3, r), 2);
-		HiddenNeuron hidden1 = new HiddenNeuron(randomWeights(3, r), 2);
+		Random r = new Random(); //Create Random object for generating weights
+		OutputNeuron output1 = new OutputNeuron(randomWeights(3, r), 2); //Create an Neurons, calling on randomWeights 
+		HiddenNeuron hidden1 = new HiddenNeuron(randomWeights(3, r), 2); //to generate random weights for the neurons
 		HiddenNeuron hidden2 = new HiddenNeuron(randomWeights(3, r), 2);
-		InputNeuron input1 = new InputNeuron();
+		InputNeuron input1 = new InputNeuron();//Input neurons have no wieghts...
 		InputNeuron input2 = new InputNeuron();
-		double error=2;
-		double error0;
-		double error1;
-		double error2;
-		double error3;
-		int counter =0;
-		while(error>.001){
-			error=0.0;
-			for(int count = 0;count<4;count++){
-				if(count==0){
-					input1.setInput(0.0);
-					input2.setInput(0.0);
+		double error=2; //Initialize error (which is actually Root Mean-Square error) to something greater than the acceptable error
+		double error0, error1, error2, error3;//Error values for each of the input subsets. In this case, since the inputs
+		int counter =0; //are either 00, 01, 10, or 11, there are 4 error values.
+		while(error>.001){ //Declare the acceptable error here
+			error=0.0; //error must be declared before the for loop, or java will throw an error due to the if statements
+			for(int count = 0;count<4;count++){ //For the four input values
+				if(count==0){ //in the first case
+					input1.setInput(0.0);//the value of the first input is: 0
+					input2.setInput(0.0);//the value of the second input is: 0
 				}
-				else if(count==1){
+				else if(count==1){//in the second case
 					input1.setInput(1.0);
 					input2.setInput(0.0);
 				}
-				else if(count==2){
+				else if(count==2){//in the third case
 					input1.setInput(0.0);
 					input2.setInput(1.0);
 				}
-				else{
+				else{//in the fourth case
 					input1.setInput(1.0);
 					input2.setInput(1.0);
 				}
 				double[] temp = {input1.getOutput(), input2.getOutput()};
-				hidden1.setInput(temp);
+				hidden1.setInput(temp);//Pass the hidden neurons the input values
 				hidden2.setInput(temp);
 //				hidden3.setInput(temp);
 				double[] temp2 = {hidden1.getOutput(), hidden2.getOutput()};
-				output1.setInput(temp2);
-				if(count==0){
-					error0 = 1-output1.getOutput();
-					output1.updateWeight(error0);
-					double[] htemp = {output1.getDelta()};
+				output1.setInput(temp2);//Pass the output neuron the hidden neuron's values
+				if(count==0){//for the first case
+					error0 = 1-output1.getOutput();//THIS IS WHAT YOU CHANGE TO SWITCH BETWEEN AND, NOR, XOR, etc.
+					output1.updateWeight(error0); //you change the value that output1 is subtracted from 
+					double[] htemp = {output1.getDelta()}; //This is all the code for the learning.
 					double[] h1temp = {output1.getWeightValuePast()[0]};
 					double[] h2temp = {output1.getWeightValuePast()[1]};
 					hidden1.updateWeight(htemp, h1temp);
@@ -99,7 +94,7 @@ public class neural_network{
 				}
 			}
 		counter++;
-		}
+		}//The following code outputs the trained networks results  for the inputs.
 		System.out.println("0 0");
 		input1.setInput(0.0);
 		input2.setInput(0.0);
