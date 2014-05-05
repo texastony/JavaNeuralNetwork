@@ -1,8 +1,8 @@
-package texastony.neural_network;
+package neural_network;
 
 import java.util.Random;
 
-import texastony.neural_network.HiddenNeuron;
+import neural_network.HiddenNeuron;
 
 public class TestHiddenNeuron_AND {
 	public static void main(String[] args) {

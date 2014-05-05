@@ -1,4 +1,4 @@
-package texastony.neural_network;
+package neural_network;
 public class InputNeuron{
 	double inputValue;
 	double outputValue;

@@ -1,9 +1,10 @@
-package texastony.neural_network;
+package neural_network;
 
 import java.util.Random;
-import texastony.neural_network.OutputNeuron;
-import texastony.neural_network.HiddenNeuron;
-import texastony.neural_network.InputNeuron;
+
+import neural_network.HiddenNeuron;
+import neural_network.InputNeuron;
+import neural_network.OutputNeuron;
 
 
 public class neural_network{	

@@ -1,11 +1,11 @@
-package texastony.neural_network;
-
+package neural_network;
 
 import java.util.Random;
-import texastony.neural_network.OutputNeuron;
+
+import neural_network.OutputNeuron;
 
 
-public class TestNeuron_AND {
+public class TestNeuron_OR {
 	public static void main(String[] args) {
 		Random r = new Random();
 		OutputNeuron output1 = new OutputNeuron(randomWeights(3, r), 2);
@@ -36,12 +36,12 @@ public class TestNeuron_AND {
 					error=error1*error1;
 				}
 				else if(count==1){
-					error2 = 0-output1.getOutput();
+					error2 = 1-output1.getOutput();
 					output1.updateWeight(error2);
 					error+=error2*error2;
 				}
 				else if(count==2){
-					error3 = 0-output1.getOutput();
+					error3 = 1-output1.getOutput();
 					output1.updateWeight(error3);
 					error+=error3*error3;
 				}
@@ -78,5 +78,6 @@ public class TestNeuron_AND {
 			output[i]=(r.nextDouble()-.5)*2*(2.4/numInputs);
 		}
 		return output;
+		
 	}
 }
