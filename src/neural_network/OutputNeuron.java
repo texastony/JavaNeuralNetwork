@@ -2,6 +2,7 @@ package neural_network;
 
 import java.lang.Math;
 
+//TODO: Can we edit the weightValuePast array to not have theta in it?
 public class OutputNeuron{
 	/**
 	 * Array that holds the input values
@@ -92,23 +93,29 @@ public class OutputNeuron{
 	
 	/**
 	 * Triggers the weight correction procedure.
-	 * As this an output neuron, there should be only one
+	 * &nbsp;&nbsp;As this an output neuron, there should be only one
 	 * error passed to the function. This error should be 
 	 * calculated by the desired output minus the actual output,
-	 * or: <p>
+	 * or: <br>
 	 * e_out = desired - actual
-	 * <p> 
-	 * The update function starts by calculating delta, the error gradient.
+	 * <p>
+	 * &nbsp;&nbsp;The update function starts by calculating delta, the error gradient.
 	 * The error gradient is the derivative of the activation function multiplied 
 	 * by the error at the neuron output. This is why we use the Sigmoid function,
-	 * its delta 
+	 * as the derivative of the sigmoid function is: 
+	 * <br> Sigmoid_prime = Sigmoid * (1 - Sigmoid) <p>
+	 * &nbsp;&nbsp;Applied to our case:<br>
+	 * delta = output * (1 - output) * e_out
 	 * <p>
-	 * delta = output 
+	 * &nbsp;&nbsp;Then, every weight (including the threshold weight, theta) is updated to be
+	 * the sum of the weight and the product of the learning factor, the input value, 
+	 * and delta.<p>
+	 * &nbsp;&nbsp;In terms of operations, this function copies the current weights to previous weight
+	 * array, does the above the arithmetic, and stores these values as the weights.
 	 * 
-	 * @param e_out 
+	 * @param e_out &nbsp;&nbsp;e_out = desired - actual
 	 */
 	public void updateWeight(double e_out) {
-//		System.out.print(outputValue+"  ");
 		for(int i=0; i< weightValue.length; i++){
 			weightValuePast[i] = weightValue[i];
 		}
@@ -117,12 +124,26 @@ public class OutputNeuron{
 			weightValue[i]=weightValue[i]+learningFactor*inputValue[i]*delta;
 		}
 		weightValue[inputValue.length]=weightValue[inputValue.length]+learningFactor*threshold*delta;
-//	System.out.println(e_out);
 	}
 	
+	/**
+	 * When calculating the error gradients for the hidden layer neurons outputing
+	 * to this neuron, you will need this neuron's delta. That is what
+	 * this function is for. It does not modify anything.
+	 * @return double delta &nbsp;&nbsp;This neuron's error gradient (or delta) from the most recent update.
+	 */
 	public double getDelta(){
 		return delta;
 	}
+	
+	/**
+	 * When calculating the error gradeint for the hidden layer neurons outputing
+	 * to this neuron, you will need the original weights. The weights that have not
+	 * been corrected by calling <code> updateWight() </code>. This function returns all
+	 * of the weights. However, the last double in the array is in fact theta (the threshold weight),
+	 * which should be of no use. 
+	 * @return double[numInputs+1] weightValuePast; &nbsp;&nbsp;The weights before the most recent update.
+	 */
 	public double[] getWeightValuePast(){
 		return weightValuePast;
 	}
