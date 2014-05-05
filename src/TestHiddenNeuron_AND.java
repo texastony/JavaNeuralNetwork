@@ -1,7 +1,6 @@
-package neural_network;
+
 
 import java.util.Random;
-
 import neural_network.HiddenNeuron;
 
 public class TestHiddenNeuron_AND {

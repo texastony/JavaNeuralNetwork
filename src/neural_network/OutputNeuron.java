@@ -115,11 +115,9 @@ public class OutputNeuron{
 	 * @param e_out &nbsp;&nbsp;e_out = desired - actual
 	 */
 	public void updateWeight(double e_out) {
-		for(int i=0; i < weightValue.length; i++){
-			weightValuePast[i] = weightValue[i];
-		}
 		delta=(outputValue-(outputValue*outputValue))*e_out;
 		for (int i=0; i<inputValue.length; i++){
+			weightValuePast[i] = weightValue[i];
 			weightValue[i]=weightValue[i]+learningFactor*inputValue[i]*delta;
 		}
 		weightValue[inputValue.length]=weightValue[inputValue.length]+learningFactor*threshold*delta;

@@ -1,4 +1,4 @@
-package neural_network;
+
 
 /*
 MLP neural network in Java

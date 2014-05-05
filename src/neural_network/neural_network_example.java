@@ -2,12 +2,8 @@ package neural_network;
 
 import java.util.Random;
 
-import neural_network.HiddenNeuron;
-import neural_network.InputNeuron;
-import neural_network.OutputNeuron;
 
-
-public class neural_network{	
+public class neural_network_example{	
 	public static void main(String[] args) {
 		Random r = new Random(); //Create Random object for generating weights
 		OutputNeuron output1 = new OutputNeuron(randomWeights(3, r), 2); //Create an Neurons, calling on randomWeights 
