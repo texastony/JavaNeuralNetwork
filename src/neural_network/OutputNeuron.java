@@ -2,7 +2,6 @@ package neural_network;
 
 import java.lang.Math;
 
-//TODO: Can we edit the weightValuePast array to not have theta in it?
 public class OutputNeuron{
 	/**
 	 * Array that holds the input values
@@ -48,7 +47,7 @@ public class OutputNeuron{
 		this.threshold = -1;
 		this.learningFactor = 01.0;
 		this.weightValue = intialWeightValue;
-		this.weightValuePast = new double[numInputs+1];
+		this.weightValuePast = new double[numInputs];
 	}
 	
 	/** Sets the inputs of the nueron
@@ -116,7 +115,7 @@ public class OutputNeuron{
 	 * @param e_out &nbsp;&nbsp;e_out = desired - actual
 	 */
 	public void updateWeight(double e_out) {
-		for(int i=0; i< weightValue.length; i++){
+		for(int i=0; i < weightValue.length; i++){
 			weightValuePast[i] = weightValue[i];
 		}
 		delta=(outputValue-(outputValue*outputValue))*e_out;
@@ -140,8 +139,7 @@ public class OutputNeuron{
 	 * When calculating the error gradeint for the hidden layer neurons outputing
 	 * to this neuron, you will need the original weights. The weights that have not
 	 * been corrected by calling <code> updateWight() </code>. This function returns all
-	 * of the weights. However, the last double in the array is in fact theta (the threshold weight),
-	 * which should be of no use. 
+	 * of the weights.
 	 * @return double[numInputs+1] weightValuePast; &nbsp;&nbsp;The weights before the most recent update.
 	 */
 	public double[] getWeightValuePast(){
