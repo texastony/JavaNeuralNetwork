@@ -76,6 +76,15 @@ public class HiddenNeuron{
 	}
 	
 	/**
+	 * If you wanted to use something other than 1,
+	 * this would change that. 
+	 * @param Learning
+	 */
+	public void setLearning(double Learning){
+		this.learningFactor = Learning;
+	}
+	
+	/**
 	 * Essientally triggers the activation function with the current
 	 * neuron attributes.
 	 * <p>&nbsp;&nbsp;The activation function is the quotient of 1 divided by the sum of 1
@@ -93,6 +102,27 @@ public class HiddenNeuron{
 		tempValue+= threshold*weightValue[inputValue.length];
 		outputValue = 1/(1+Math.exp(-tempValue));
 		return outputValue;
+	}
+
+	/**
+	 * When calculating the error gradients for the hidden layer neurons outputing
+	 * to this neuron, you will need this neuron's delta. That is what
+	 * this function is for. It does not modify anything.
+	 * @return double delta &nbsp;&nbsp;This neuron's error gradient (or delta) from the most recent update.
+	 */
+	public double getDelta(){
+		return delta;
+	}
+	
+	/**
+	 * When calculating the error gradeint for the hidden layer neurons outputing
+	 * to this neuron, you will need the original weights. The weights that have not
+	 * been corrected by calling <code> updateWight() </code>. This function returns all
+	 * of the weights.
+	 * @return double[numInputs+1] weightValuePast; &nbsp;&nbsp;The weights before the most recent update.
+	 */
+	public double[] getWeightValuePast(){
+		return weightValuePast;
 	}
 	
 	/**

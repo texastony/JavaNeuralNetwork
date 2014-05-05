@@ -143,4 +143,13 @@ public class OutputNeuron{
 	public double[] getWeightValuePast(){
 		return weightValuePast;
 	}
+	
+	/**
+	 * If you wanted to use something other than 1,
+	 * this would change that. 
+	 * @param Learning
+	 */
+	public void setLearning(double Learning){
+		this.learningFactor = Learning;
+	}
 }
