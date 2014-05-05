@@ -231,11 +231,6 @@ public class multiOut {
 						error+=error15*error15;
 						error=error/16;
 						error=java.lang.Math.sqrt(error);
-						
-						if (error < pastError) {
-							pastError = error;
-							System.out.println("error =" + error);
-						}
 					}
 				}
 				no.updateWeight(errorN); //you change the value that output1 is subtracted from 
@@ -250,88 +245,85 @@ public class multiOut {
 				hidden23.updateWeight(htemp, h1temp);
 				hidden24.updateWeight(htemp, h2temp);
 			}
+		if (error < pastError) {
+			pastError = error;
+			System.out.println(counter + " error = " + error);
+		}
+		if (counter % 10 == 10) {
+			System.out.println(counter + " error = " + error);
+			System.out.println("0 0 0 0");
+			N.setInput(0.0);
+			E.setInput(0.0);
+			S.setInput(0.0);
+			W.setInput(0.0);
+			double[] temp1 = {N.getOutput(), E.getOutput(), S.getOutput(), W.getOutput()};
+			hidden1.setInput(temp1);
+			hidden2.setInput(temp1);
+			double [] temp21 = {hidden1.getOutput(), hidden2.getOutput()};
+			no.setInput(temp21);
+			eo.setInput(temp21);
+			so.setInput(temp21);
+			wo.setInput(temp21);
+			System.out.println(no.getOutput() + " " + eo.getOutput() + " " + so.getOutput() + " " + wo.getOutput());					
+			System.out.println("0 0 0 1");
+			N.setInput(0.0);
+			E.setInput(0.0);
+			S.setInput(0.0);
+			W.setInput(1.0);
+			double[] temp3 = {N.getOutput(), E.getOutput(), S.getOutput(), W.getOutput()};
+			hidden1.setInput(temp3);
+			hidden2.setInput(temp3);
+			double [] temp4 = {hidden1.getOutput(), hidden2.getOutput()};
+			no.setInput(temp4);
+			eo.setInput(temp4);
+			so.setInput(temp4);
+			wo.setInput(temp4);
+			System.out.println(no.getOutput() + " " + eo.getOutput() + " " + so.getOutput() + " " + wo.getOutput());
+			System.out.println("0 0 1 0");
+			N.setInput(0.0);
+			E.setInput(0.0);
+			S.setInput(1.0);
+			W.setInput(0.0);
+			double[] temp5 = {N.getOutput(), E.getOutput(), S.getOutput(), W.getOutput()};
+			hidden1.setInput(temp5);
+			hidden2.setInput(temp5);
+			double [] temp6 = {hidden1.getOutput(), hidden2.getOutput()};
+			no.setInput(temp6);
+			eo.setInput(temp6);
+			so.setInput(temp6);
+			wo.setInput(temp6);
+			System.out.println(no.getOutput() + " " + eo.getOutput() + " " + so.getOutput() + " " + wo.getOutput());
+			System.out.println("0 1 0 0");
+			N.setInput(0.0);
+			E.setInput(1.0);
+			S.setInput(0.0);
+			W.setInput(0.0);
+			double[] temp7 = {N.getOutput(), E.getOutput(), S.getOutput(), W.getOutput()};
+			hidden1.setInput(temp7);
+			hidden2.setInput(temp7);
+			double [] temp8 = {hidden1.getOutput(), hidden2.getOutput()};
+			no.setInput(temp8);
+			eo.setInput(temp8);
+			so.setInput(temp8);
+			wo.setInput(temp8);
+			System.out.println(no.getOutput() + " " + eo.getOutput() + " " + so.getOutput() + " " + wo.getOutput());	
+			System.out.println("1 0 0 0");
+			N.setInput(1.0);
+			E.setInput(0.0);
+			S.setInput(0.0);
+			W.setInput(0.0);
+			double[] temp9 = {N.getOutput(), E.getOutput(), S.getOutput(), W.getOutput()};
+			hidden1.setInput(temp9);
+			hidden2.setInput(temp9);
+			double [] temp10 = {hidden1.getOutput(), hidden2.getOutput()};
+			no.setInput(temp10);
+			eo.setInput(temp10);
+			so.setInput(temp10);
+			wo.setInput(temp10);
+			System.out.println(no.getOutput() + " " + eo.getOutput() + " " + so.getOutput() + " " + wo.getOutput());				
+		}
 		counter++;
-		}//The following code outputs the trained networks results  for the inputs.
-		System.out.println("0 0 0 0");
-		N.setInput(0.0);
-		E.setInput(0.0);
-		S.setInput(0.0);
-		W.setInput(0.0);
-		double[] temp1 = {N.getOutput(), E.getOutput(), S.getOutput(), W.getOutput()};
-		hidden1.setInput(temp1);
-		hidden2.setInput(temp1);
-		double [] temp2 = {hidden1.getOutput(), hidden2.getOutput()};
-		no.setInput(temp2);
-		eo.setInput(temp2);
-		so.setInput(temp2);
-		wo.setInput(temp2);
-		System.out.println(no.getOutput() + " " + eo.getOutput() + " " + so.getOutput() + " " + wo.getOutput());
-		
-		
-		System.out.println("0 0 0 1");
-		N.setInput(0.0);
-		E.setInput(0.0);
-		S.setInput(0.0);
-		W.setInput(1.0);
-		double[] temp3 = {N.getOutput(), E.getOutput(), S.getOutput(), W.getOutput()};
-		hidden1.setInput(temp3);
-		hidden2.setInput(temp3);
-		double [] temp4 = {hidden1.getOutput(), hidden2.getOutput()};
-		no.setInput(temp4);
-		eo.setInput(temp4);
-		so.setInput(temp4);
-		wo.setInput(temp4);
-		System.out.println(no.getOutput() + " " + eo.getOutput() + " " + so.getOutput() + " " + wo.getOutput());
-		
-		
-		System.out.println("0 0 1 0");
-		N.setInput(0.0);
-		E.setInput(0.0);
-		S.setInput(1.0);
-		W.setInput(0.0);
-		double[] temp5 = {N.getOutput(), E.getOutput(), S.getOutput(), W.getOutput()};
-		hidden1.setInput(temp5);
-		hidden2.setInput(temp5);
-		double [] temp6 = {hidden1.getOutput(), hidden2.getOutput()};
-		no.setInput(temp6);
-		eo.setInput(temp6);
-		so.setInput(temp6);
-		wo.setInput(temp6);
-		System.out.println(no.getOutput() + " " + eo.getOutput() + " " + so.getOutput() + " " + wo.getOutput());
-		
-		
-		
-		System.out.println("0 1 0 0");
-		N.setInput(0.0);
-		E.setInput(1.0);
-		S.setInput(0.0);
-		W.setInput(0.0);
-		double[] temp7 = {N.getOutput(), E.getOutput(), S.getOutput(), W.getOutput()};
-		hidden1.setInput(temp7);
-		hidden2.setInput(temp7);
-		double [] temp8 = {hidden1.getOutput(), hidden2.getOutput()};
-		no.setInput(temp8);
-		eo.setInput(temp8);
-		so.setInput(temp8);
-		wo.setInput(temp8);
-		System.out.println(no.getOutput() + " " + eo.getOutput() + " " + so.getOutput() + " " + wo.getOutput());
-		
-		System.out.println("1 0 0 0");
-		N.setInput(1.0);
-		E.setInput(0.0);
-		S.setInput(0.0);
-		W.setInput(0.0);
-		double[] temp9 = {N.getOutput(), E.getOutput(), S.getOutput(), W.getOutput()};
-		hidden1.setInput(temp9);
-		hidden2.setInput(temp9);
-		double [] temp10 = {hidden1.getOutput(), hidden2.getOutput()};
-		no.setInput(temp10);
-		eo.setInput(temp10);
-		so.setInput(temp10);
-		wo.setInput(temp10);
-		System.out.println(no.getOutput() + " " + eo.getOutput() + " " + so.getOutput() + " " + wo.getOutput());
-		
-		
+	}		
 		System.out.println(counter);
 	}
 	
